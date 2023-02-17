@@ -5,7 +5,7 @@ const {StatusCodes} = require('http-status-codes')
 const {BadRequestError, UnauthenticatedError} = require('../errors')
 
 
-const getAllJob = async (req,res) => {
+const getMyJob = async (req,res) => {
     const {userId} = req.user
     try {
 
@@ -17,6 +17,15 @@ const getAllJob = async (req,res) => {
     }
    
 
+}
+
+const getAllJob = async (req,res) => {
+        const jobs = await Job.find({})
+        if(!jobs){
+            return res.status(StatusCodes.OK).json({msg:`No job available`})
+        }
+
+        res.status(StatusCodes.OK).json({jobs})
 }
 
 const getSingleJob = async (req,res) => {
@@ -69,4 +78,4 @@ const deleteJob = async (req,res) => {
     res.status(StatusCodes.OK).json({job})
 }
 
-module.exports = {getAllJob,getSingleJob,createJob,updateJob,deleteJob}
+module.exports = {getAllJob,getSingleJob,createJob,updateJob,deleteJob,getMyJob}

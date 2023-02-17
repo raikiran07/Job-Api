@@ -37,7 +37,9 @@ app.use(xss())
 
 // routes
 app.get('/', (req, res) => {
-  res.send('jobs api');
+  res.status(200).json({msg:`Hello from job Api`,
+job:'/api/v1/job',
+})
 });
 
 //using the routes
