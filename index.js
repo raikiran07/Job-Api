@@ -39,7 +39,7 @@ app.use(xss())
 app.get('/', (req, res) => {
   res.status(200).json({msg:`Hello from job Api`,
                        job:'/api/v1/job',
-                       user:'/api/v1/user/users'
+                       user:'/api/v1/auth/users'
 })
 });
 
